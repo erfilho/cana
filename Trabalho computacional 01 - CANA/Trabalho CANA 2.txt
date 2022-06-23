@@ -1,0 +1,9 @@
+Questão 01 -
+a) [C] - Janiel
+b) [Java] - Janiel
+c) [Ruby] - Erineldo [ CountingSort ]
+d) [Java] - Alan [ InsertionSort, SelectionSort, QuickSort ] 
+e) [Python] - Alan [ BubbleSort ] 
+f) [Python] - Erineldo [ ShellSort ]
+Questão 02 - Thaynara
+Questão 03 - Thaynara
