@@ -8,16 +8,9 @@ Disciplina: Construção e Análise de Algoritmos
 
 Trabalho Computacional 02 - Árvores e Heapsort
 
-Questão 04 - 
-
-Implemente em Python todos os dez algoritmos de ordenação ensinados em sala de aula, realizando experimentos que avaliem o tempo de execução para ordenar de acordo com as seguintes regras:
-
-I.Serão nove vetores com os seguintes tamanhos para cada um: 1000, 3000, 6000, 9000, 12000, 15000, 18000, 21000, 24000.
-II.Os métodos de ordenação são:Bubble sort, Insertion sort, Selection sort, Merge sort, Quick sort, Counting sort, Radix sort, Shell sort, Bucket sort e Heapsort. 
-III.Os valores armazenados nos nove vetores serão números inteiros gerados aleatoriamente. 
-IV.Usar a biblioteca “matplotlib.pyplot”
-V.Plotar um gráfico comparando o tempo de execução dos algoritmos de acordo com o tamanho do vetor.
+Questão 05 - 
 """
+import random
 
 # Definição da função heapify
 def heapify(array, n, i):
@@ -46,9 +39,17 @@ def heapsort(array):
         array[i], array[0] = array[0], array[i]
         heapify(array, i, 0)
 
-arr = [12, 45, 6, 1, 6, 23]
+# gera uma lista de inteiros de modo aleatorio
+def geraLista(tam):
+  random.seed()
+  i = 0
+  lista = []
+  while i < tam:
+    lista.append(random.randint(1, tam))
+    i += 1
+  return lista
+
+arr = geraLista(10)
 heapsort(arr)
-n = len(arr)
-print('O array ordenado é: ')
-for i in range(n):
-    print(f"{arr[i]}, ")
+print('O array ordenado decrescente é: ')
+print(arr)

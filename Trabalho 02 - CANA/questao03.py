@@ -1,58 +1,59 @@
-from errno import EILSEQ
-from setuptools import PEP420PackageFinder
+class No:
+    def __init__(self, key, dir, esq):
+        self.item = key
+        self.dir = dir
+        self.esq = esq
 
+class Arvore:
+    def __init__(self):
+        self.root = No(None, None, None)
+        self.root = None
 
-class Node:
-    def __init__(self, chave= None, esquerda= None, direita= None):
-        self.chave = chave
-        self.esquerda = esquerda
-        self.direita = direita
+    def inserir(self, v):
+          novo = No(v,None,None) # cria um novo Nó
+          if self.root == None:
+               self.root = novo
+          else: # se nao for a raiz
+               atual = self.root
+               while True:
+                    anterior = atual
+                    if v <= atual.item: # ir para esquerda
+                         atual = atual.esq
+                         if atual == None:
+                                anterior.esq = novo
+                                return
+                    # fim da condição ir a esquerda
+                    else: # ir para direita
+                         atual = atual.dir
+                         if atual == None:
+                                 anterior.dir = novo
+                                 return
+                    # fim da condição ir a direita
 
-    def __repr__(self) -> str:
-        return "%s <- %s -> %s" % (self.esquerda and self.esquerda.chave,
-                                    self.chave,
-                                    self.direita and self.direita.chave)
-
-
-def altura(raiz):
-    if raiz is None:
-        return 0
-    return max(altura(raiz.esquerda), altura(raiz.direita)) + 1
-def profundidade(raiz, no):
-    if raiz is None:
-        return 0
+    def altura(self, atual):
+        if atual == None or atual.esq == None and atual.dir == None:
+            return 0
+        else:
+            if self.altura(atual.esq) > self.altura(atual.dir):
+                return  1 + self.altura(atual.esq) 
+            else:
+                return  1 + self.altura(atual.dir) 
     
-    dist = 0
+    def profundidade(self):
+        return 0
 
-    if raiz == no:
-        return dist + 1
-    elif profundidade(raiz.esquerda, no) >= 0:
-        dist = profundidade(raiz.esquerda, no)
-        return dist + 1
-    elif profundidade(raiz.direita, no) >= 0:
-        dist = profundidade(raiz.direita, no)
-        return dist + 1
-    return dist
+    def getGrau(self, no):
+        return 0
 
+    def getNosFolhas(self, atual):
+         if atual.esq == None and atual.dir == None:
+              return atual.key
+        
+arvore = Arvore()
 
+valores = [1, 2, 3, 4, 5, 6, 8, 12, 10, 11, 13, 14, 15]
 
+for i in valores:
+    arvore.inserir(i)
 
-raiz = Node(8)
-raiz.esquerda = Node(4)
-raiz.direita = Node(12)
-
-raiz.esquerda.esquerda = Node(2)
-raiz.esquerda.direita = Node(6)
-raiz.esquerda.esquerda.esquerda = Node(1)
-raiz.esquerda.esquerda.direita = Node(3)
-raiz.esquerda.direita.esquerda = Node(5)
-
-raiz.direita.esquerda = Node(10)
-raiz.direita.direita = Node(14)
-raiz.direita.esquerda.direita = Node(11)
-raiz.direita.direita.esquerda = Node(13)
-raiz.direita.direita.direita = Node(15)
-
-
-
-print(profundidade(raiz, 6))
+print(arvore.getNosFolhas(arvore.root))
