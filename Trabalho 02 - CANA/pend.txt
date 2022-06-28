@@ -1,6 +1,6 @@
 Trabalho 02 - CANA
 
-Questão 01 - 
+Questão 01 - - OK
 Questão 02 - - OK
 Questão 03 - Árvore -
 Questão 04 - Sorting - OK
