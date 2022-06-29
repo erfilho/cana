@@ -106,7 +106,7 @@ grau_No = arvore.getGrau(8)
 altura = arvore.altura(arvore.root)
 profundidade = arvore.profundidade(arvore.root)
 
-print("Nós fonha:", nos_folha)
+print("Nós folha:", nos_folha)
 print("Grau do nó 8:", grau_No)
 print("altura da arvore:", altura)
 print("profundidade da arvore:", profundidade)
